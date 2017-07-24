@@ -28,9 +28,7 @@ public class LoginPage {
         return $(By.xpath("//button[@type='submit']"));
     }
 
-    //Методы
-    public WallPage clickButtonLogin() {
-        buttonLogIn().click();
-        return new WallPage();
+    public SelenideElement messageError() {
+        return $(By.xpath("//div[@class='message-inside']/span"));
     }
 }
