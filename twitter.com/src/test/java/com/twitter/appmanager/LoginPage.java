@@ -28,7 +28,5 @@ public class LoginPage {
         return $(By.xpath("//button[@type='submit']"));
     }
 
-    public SelenideElement messageError() {
-        return $(By.xpath("//div[@class='message-inside']/span"));
-    }
+
 }

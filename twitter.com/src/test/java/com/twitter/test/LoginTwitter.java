@@ -1,17 +1,17 @@
 package com.twitter.test;
 
+import com.twitter.appmanager.CommonElements;
 import com.twitter.appmanager.LoginPage;
 import com.twitter.appmanager.WallPage;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Condition.disabled;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 
 public class LoginTwitter extends TestBase{
 
 
-    @Test (enabled = false)
+    @Test
     public void successfulLogin() {
         LoginPage loginPage = new LoginPage();
         loginPage.openPage();
@@ -24,13 +24,14 @@ public class LoginTwitter extends TestBase{
     }
 
 
-    @Test
+    @Test (enabled = false)
     public void errorLogin() {
         LoginPage loginPage = new LoginPage();
+        CommonElements commonElements = new CommonElements();
         loginPage.openPage();
-        loginPage.messageError().shouldNotBe(visible);
+        commonElements.message().shouldNotBe(visible);
         loginPage.buttonLogIn().click();
-        loginPage.messageError().shouldBe(visible).shouldHave(text("Введённые имя пользователя и пароль не совпадают с сохранёнными в нашей базе данных. Проверьте правильность введённых данных и повторите попытку."));
+        commonElements.message().shouldBe(visible).shouldHave(text("Введённые имя пользователя и пароль не совпадают с сохранёнными в нашей базе данных. Проверьте правильность введённых данных и повторите попытку."));
 
     }
 
